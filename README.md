@@ -1,14 +1,57 @@
 # LVGL & Micropython Made Easy
 
----
-
-### Goal of this Project is to compile your own Version of lv_micropython with ease.
+## Goal of this Project is to compile your own Version of lv_micropython with ease.
 
 ---
 
-## Why is compiling lv_micropython not Newbie friendly?
+## What is LVGL?
 
-#### Here is what I think:
+---
+
+### LVGL stands for Light and Versatile Graphics Library
+
+Let me quote from [lvgl.io](https://lvgl.io):
+
+> LVGL is an open-source graphics library providing everything you need to create embedded GUI with easy-to-use graphical elements, beautiful visual effects and low memory footprint.
+
+Therefore it designed to run on [specific certificated boards](https://lvgl.io/boards), but also intended to run on any Microcontroller that hits the desired requirements. See [lvgl.io/features](https://lvgl.io/features) for further Details. \
+In short:
+
+-   16,32 or 64 bit microcontroller or processor
+
+-   16 MHz speed is recommended
+
+-   Flash/ROM: > 64 kB (180 kB is recommended)
+
+-   RAM: 8 kB (24 kB is recommended)
+
+-   1 Frame buffer: in MCU, external RAM, or display controller
+
+-   Graphics buffer for LVGL: > “Horizontal resolution” pixels \
+    (1/10 “Screen size” is recommended)
+
+-   C99 or newer compiler
+
+-   Basic C (or C++) knowledge: \
+    pointers, structs, callbacks
+
+**And last but not least, the good news:**
+
+Thankfully, a guy named Amir Gonnen (amirgon) seems to love Micropython and Devices like the ESP32. Therefore he created a Micropython Binding.
+That means the developer team, brings LVGL into Micropython! - you hear a stadium cheer -
+
+But instead of trying to build everything from scratch they decided obviously
+to create [lv_micropython](https://github.com/lvgl/lv_micropython.git).
+So you can skip these Step if you dont have any clue to do that, like me.
+
+Now you need only the knowledge to compile that version.
+What is, by the time, around 408 commits behind the original [Micropython](https://micropython.org)
+
+---
+
+# Why is compiling lv_micropython not Newbie friendly?
+
+### Here is what I think:
 
 This Framework is designed for Profesional Use.
 But, in my opinion it is the perfect framework for "Makers" like me
