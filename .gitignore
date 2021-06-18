@@ -1,0 +1,11 @@
+# Ignore lv_micropython
+lv_micropython/
+
+# Ignore ESP-IDF
+esp-idf/
+
+# Ignore Xtensa Compiler
+xtensa*/
+
+# Ignore build-venv
+build-venv/

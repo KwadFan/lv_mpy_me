@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+    lvgl_mpy_me:
+        container_name: lvgl_mpy_me
+        image: ubuntu:latest
+        volumes:
+            - ./:/buildroot/:rw
+        command: >
+            bash -c '
+            cd /buildroot && ./scripts/lvgl_mpy_me.sh'
