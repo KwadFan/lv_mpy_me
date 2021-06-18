@@ -1,12 +1,8 @@
 # LVGL & Micropython Made Easy
 
-## Goal of this Project is to compile your own Version of lv_micropython with ease.
-
----
+**Goal of this Project is to compile your own Version of lv_micropython with ease.**
 
 ## What is LVGL?
-
----
 
 ### LVGL stands for Light and Versatile Graphics Library
 
@@ -49,7 +45,7 @@ What is, by the time, around 408 commits behind the original [Micropython](https
 
 ---
 
-# Why is compiling lv_micropython not Newbie friendly?
+## Why is compiling lv_micropython not Newbie friendly?
 
 ### Here is what I think:
 
