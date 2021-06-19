@@ -184,7 +184,11 @@ function compile_mpy_cross {
     popd || exit
 }
 
-
+function compile_mpy_esp32 {
+    pushd lv_micropython/ || exit
+    make -C ports/esp32 LV_CFLAGS="-DLV_COLOR_DEPTH=16 -DLV_COLOR_16_SWAP=1" BOARD=GENERIC
+    popd || exit
+}
 #### Static Exports
 export DEBIAN_FRONTEND="noninteractive"
 
@@ -202,6 +206,5 @@ check_persistant_xtensa
 add_xtensa_to_path
 copy_gnumakefile
 compile_mpy_cross
-export
-cd lv_micropython
-make -C ports/esp32 LV_CFLAGS="-DLV_COLOR_DEPTH=16 -DLV_COLOR_16_SWAP=1" BOARD=GENERIC
+compile_mpy_esp32
+
