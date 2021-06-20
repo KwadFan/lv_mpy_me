@@ -14,20 +14,13 @@ Therefore it designed to run on [specific certificated boards](https://lvgl.io/b
 In short:
 
 -   16,32 or 64 bit microcontroller or processor
-
 -   16 MHz speed is recommended
-
 -   Flash/ROM: > 64 kB (180 kB is recommended)
-
 -   RAM: 8 kB (24 kB is recommended)
-
 -   1 Frame buffer: in MCU, external RAM, or display controller
-
 -   Graphics buffer for LVGL: > “Horizontal resolution” pixels \
     (1/10 “Screen size” is recommended)
-
 -   C99 or newer compiler
-
 -   Basic C (or C++) knowledge: \
     pointers, structs, callbacks
 
@@ -84,9 +77,28 @@ Long Story, short:
 
 **I dont want to stress out anybody else and automate this procedure for you.**
 
-### Ok then, what do I need?
+## Ok then, what do I need?
 
+---
+
+**Please be aware, this will be not an "Copy & Paste" Guide!
+I will provide Links and some Commands to help out, but keep in mind
+you have to learn something new, if you know nothing about [Docker](https://www.docker.com/).**
+
+---
+
+-   Read the docs/HOWTO.md
 -   A working installation of Docker
 -   This git repo
 -   Some free time
 -   And last but not least, some fun to fiddle around with lvgl.io and Micropython :)
+
+# Troubleshooting
+
+Unfortunatly,at this point you are on your own!
+I tested this project, as said before, on a Linux Machine.
+In my case on latest [Manjaro Linux](https://manjaro.org).
+
+I can't provide Informations howto do this on MacOS or Windows!
+The provided Informations about these OS'es are more or less googled.
+Feel free to Pull Request if you're able to provide such Informations.

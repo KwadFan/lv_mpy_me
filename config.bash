@@ -12,18 +12,15 @@
 
 #### Compile Flags
 ## Edit to your needs!
-
 LV_MPY_CFLAGS="-DLV_COLOR_DEPTH=16 -DLV_COLOR_16_SWAP=1"
 LV_MPY_BOARD="GENERIC"
 
 #### Build Dependencies
-
 DEPENDENCIES="curl build-essential libreadline-dev libffi-dev \
             git pkg-config libsdl2-2.0-0 libsdl2-dev python3.8 \
             python2 python-is-python3 python3-venv python3-pip"
 
 #### lv_micropython git ( If you want to use a fork )
-
 LV_MPY_GIT="https://github.com/lvgl/lv_micropython.git"
 LV_MPY_PERSISTANT=y # Keep cloned git? (y/n) (if n it will be deleted everytime, default is y)
 
