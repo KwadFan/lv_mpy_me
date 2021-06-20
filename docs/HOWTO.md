@@ -20,7 +20,7 @@ Steps to do:
 ## Linux
 
 Should be preinstalled on most Distro's, if not
-according to your Paketmanager install Docker. In my case:
+according to your Paketmanager install Python. In my case:
 
         sudo pacman -S python python-pip
 
@@ -173,7 +173,7 @@ with the same command/action to compile new version.
 
 ---
 
-As previously mentioned a few times, you are own your own to manage that properly.
+As previously mentioned a few times, you are on your own to manage that properly.
 
 As an Example for my Device ESP-WROOM-32 DevKitC V4
 
