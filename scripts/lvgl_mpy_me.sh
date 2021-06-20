@@ -20,6 +20,9 @@
 #### Shellcheck Ignores
 # shellcheck disable=SC1091
 
+#### Error Handling
+set -e
+
 #### Sources
 source /buildroot/config.bash
 
@@ -61,27 +64,10 @@ function clone_lvgl {
 }
 
 function clone_esp_idf {
-    case ${ESP_IDF_PERSISTANT} in
-        "y")
-            if [ -d "/buildroot/esp-idf" ]; then
-                pushd esp-idf/ || exit
-                git status
-                popd || exit
-            else
-                git clone "${ESP_IDF_GIT}"
-            fi
-        ;;
-
-        "n")
-            if [ -d "/buildroot/esp-idf" ]; then
-                rm -rf /buildroot/esp-idf
-                git clone "${ESP_IDF_GIT}"
-
-            else
-                git clone "${ESP_IDF_GIT}"
-            fi
-        ;;
-    esac
+    if [ -d /buildroot/esp-idf/ ]; then
+        rm -rf /buildroot/esp-idf
+    fi
+    git clone "${ESP_IDF_GIT}"
 }
 
 function get_suphash {
@@ -106,7 +92,6 @@ function esp_idf_checkout {
     pushd esp-idf || exit
     git checkout "$(get_suphash)"
     git submodule update --init --recursive
-    git status
     popd || exit
 }
 
@@ -114,8 +99,6 @@ function export_esp_idf {
     declare -x ESPIDF="/buildroot/esp-idf"
     declare -x IDF_PATH="/buildroot/esp-idf"
 }
-
-
 
 function build_venv {
     python3 -m venv build-venv
@@ -174,8 +157,13 @@ function add_xtensa_to_path {
 }
 
 function copy_gnumakefile {
-    echo "Copying GNUmakefile to /ports/esp32"
-    cp GNUmakefile lv_micropython/ports/esp32/
+    # Skip if exists
+    if [ -f "lv_micropython/ports/esp32/GNUMakefile" ]; then
+        echo "GNUMakefile exists. Skipping"
+    else
+        echo "Copying GNUmakefile to /ports/esp32"
+        cp GNUmakefile lv_micropython/ports/esp32/
+    fi
 }
 
 function compile_mpy_cross {
@@ -186,9 +174,19 @@ function compile_mpy_cross {
 
 function compile_mpy_esp32 {
     pushd lv_micropython/ || exit
-    make -C ports/esp32 LV_CFLAGS="-DLV_COLOR_DEPTH=16 -DLV_COLOR_16_SWAP=1" BOARD=GENERIC
+    if [ -n "${LV_MPY_CFLAGS}" ] && [ -n "${LV_MPY_BOARD}" ]; then
+        make -C ports/esp32 LV_CFLAGS="${LV_MPY_CFLAGS}" BOARD="${LV_MPY_BOARD}"
+    else
+        echo "Please Setup config.bash"
+    fi
     popd || exit
 }
+
+function chmod_git_folders {
+    # This func makes Dirs accessible from Host after compile
+    chmod 0777 lv_micropython/ esp-idf/ build-venv/
+}
+
 #### Static Exports
 export DEBIAN_FRONTEND="noninteractive"
 
@@ -207,4 +205,4 @@ add_xtensa_to_path
 copy_gnumakefile
 compile_mpy_cross
 compile_mpy_esp32
-
+chmod_git_folders

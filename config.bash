@@ -10,6 +10,12 @@
 #
 ####
 
+#### Compile Flags
+## Edit to your needs!
+
+LV_MPY_CFLAGS="-DLV_COLOR_DEPTH=16 -DLV_COLOR_16_SWAP=1"
+LV_MPY_BOARD="GENERIC"
+
 #### Build Dependencies
 
 DEPENDENCIES="curl build-essential libreadline-dev libffi-dev \
@@ -24,7 +30,6 @@ LV_MPY_PERSISTANT=y # Keep cloned git? (y/n) (if n it will be deleted everytime,
 
 #### esp-idf git ( If you want to use a fork )
 ESP_IDF_GIT="https://github.com/espressif/esp-idf.git"
-ESP_IDF_PERSISTANT=y # Keep cloned git? (y/n) (if n it will be deleted everytime, default is y)
 ESP_IDF_VERSION="V4" # V3 or V4
 
 
@@ -35,4 +40,5 @@ BUILD_VENV_PERSISTANT=y # Keep (y) or Rebuild everytime (n)
 #### xtensa
 XTENSA_PERSISTANT=y # Keep (y) or grab everytime (n)
 XTENSA_DL_URL="https://github.com/espressif/crosstool-NG/releases/download/esp-2021r1/xtensa-esp32-elf-gcc8_4_0-esp-2021r1-linux-amd64.tar.gz"
+
 
